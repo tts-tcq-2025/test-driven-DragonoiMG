@@ -33,3 +33,68 @@ Start Test-driven approach
 1. Write the smallest possible failing test: give input `"" assert output to be 0 ` .
 2. Write the minimum amount of code that'll make it pass.
 3. Refactor any assumptions, continue to pass this test. Do not add any code without a corresponding test.
+
+
+### Test Specification
+
+### Test Specification
+
+**Test 1: Empty String**
+- Input: `""`
+- Expected Output: `0`
+- Description: Empty string should return zero
+
+**Test 2: Single Zero**
+- Input: `"0"`
+- Expected Output: `0`
+- Description: String containing only zero should return zero
+
+**Test 3: Single Number**
+- Input: `"1"`
+- Expected Output: `1`
+- Description: String containing single number should return that number
+
+**Test 4: Multiple Numbers with Comma**
+- Input: `"0,1,2"`
+- Expected Output: `3`
+- Description: Comma-separated numbers should return their sum
+
+**Test 5: Numbers with Mixed Delimiters (Newline and Comma)**
+- Input: `"1\n2,3"`
+- Expected Output: `6`
+- Description: Numbers separated by newlines and commas should return their sum
+
+**Test 6: Custom Delimiter**
+- Input: `"//;\n1;2"`
+- Expected Output: `3`
+- Description: Custom delimiter specified in format "//[delimiter]\n[numbers...]" should work
+
+**Test 7: Negative Numbers with Comma**
+- Input: `"1,-2,3"`
+- Expected Exception: `"negatives not allowed: -2"`
+- Description: Should throw exception listing the negative number(s)
+
+**Test 8: Negative Numbers with Mixed Delimiters**
+- Input: `"1\n-2,3"`
+- Expected Exception: `"negatives not allowed: -2"`
+- Description: Should throw exception for negatives with newline/comma separators
+
+**Test 9: Negative Numbers with Custom Delimiter**
+- Input: `"//;\n1;-2;3"`
+- Expected Exception: `"negatives not allowed: -2"`
+- Description: Should throw exception for negatives with custom delimiter
+
+**Test 10: Numbers Greater Than 1000**
+- Input: `"2,1001,6"`
+- Expected Output: `8`
+- Description: Numbers > 1000 should be ignored in the sum
+
+**Test 11: Multiple Negatives**
+- Input: `"1,-2,-3,4"`
+- Expected Exception: `"negatives not allowed: -2, -3"`
+- Description: Should list all negative numbers in exception message
+
+**Test 12: Multi-Character Custom Delimiter**
+- Input: `"//[***]\n1***2***3"`
+- Expected Output: `6`
+- Description: Should support delimiters of any length using bracket notation
